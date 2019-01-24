@@ -45,3 +45,33 @@ public:
         
     }
 };
+
+/* Run time 108ms and beats 11% of CPP submissions */
+class Solution {
+public:
+    bool isMonotonic(vector<int>& A) {
+
+        int n = A.size();
+
+        if(n == 0){
+            return true;
+        }
+
+        if(n == 1){
+            return true;
+        }
+
+        vector<int> in_a(A.begin(), A.end());
+        vector<int> dc_a(A.begin(), A.end());
+
+        sort(in_a.begin(), in_a.end());
+        sort(dc_a.begin(), dc_a.end(), greater<int>());
+
+        if(in_a == A || dc_a == A){
+           return true;
+        }
+
+        return false;
+
+    }
+};
