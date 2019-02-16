@@ -15,6 +15,65 @@ public:
         int n = v.size();
         
         int cur_max = 0;
+        int index = start;
+        for(int i = start; i <= end; i++){
+            if(v[index] < v[i]){
+                index = i; 
+            }
+        }
+        
+        return index;
+        
+    }
+    
+    TreeNode * helper(vector<int> nums, int start, int end){
+        
+           int index = max_index(nums, start, end);
+               
+           TreeNode *root = new TreeNode(nums[index]);
+              
+           if(index > start )
+             root->left = helper(nums, start, index-1);
+            
+           if(end > index) 
+              root->right = helper(nums, index+1, end);
+           
+           return root;
+    }
+    
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        
+          TreeNode *root = NULL;
+        
+          int n = nums.size();
+        
+          // int index = max_index(nums, 0, n-1);
+        
+          // root = new TreeNode(nums[index]);
+          // root->left = helper(root, nums, 0, index-1);
+          root = helper(nums, 0, n-1);
+              
+          return root;
+    }
+};
+
+/*
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    
+    int max_index(vector<int> v, int start, int end){
+        
+        int n = v.size();
+        
+        int cur_max = 0;
         int index = -1;
         for(int i = start; i <= end; i++){
             if(v[i] > cur_max){
