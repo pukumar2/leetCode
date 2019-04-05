@@ -47,3 +47,85 @@ public:
         return false;
     }
 };
+
+/* Run time 4ms and beats 100% CPP SUbmissions, stack method */
+class Solution {
+public:
+    bool backspaceCompare(string S, string T) {
+
+       stack<char> s1;
+       stack<char> s2;
+
+       int n = S.length();
+       int m = T.length();
+
+        int i = 0;
+        while(i < n){
+
+            if(S[i] != '#')
+                    s1.push(S[i]);
+
+            else if(S[i] == '#' && s1.size() > 0){
+                s1.pop();
+            }
+            else if(S[i] == '#' && s1.size() == 0){
+                i++;
+                continue;
+            }
+            i++;
+        }
+
+        i = 0;
+
+        while(i < m){
+
+            if(T[i] != '#'){
+               s2.push(T[i]);
+              // cout << "Inserting -> "  << T[i] << endl;
+            }
+            else if(T[i] == '#' && s2.size() > 0){
+               // cout << "Popping -> " << s2.top() << endl;
+                s2.pop();
+            }
+            else if(T[i] == '#' && s2.size() == 0){
+                i++;
+                continue;
+            }
+
+            i++;
+        }
+
+
+
+      /*  cout << "First stack " << endl;
+        while(!s1.empty()){
+            cout << s1.top() << " ";
+            s1.pop();
+        }
+        cout << "\n";
+
+        cout << "\nSecond stack " << endl;
+        while(!s2.empty()){
+            cout << s2.top() << " ";
+            s2.pop();
+        }
+        cout << "\n";
+
+        */
+
+      while(!s1.empty() && !s2.empty()){
+             if(s1.top() != s2.top()){
+                  return false;
+              }
+              s1.pop();
+              s2.pop();
+        }
+
+        if(s1.size() == 0 && s2.size() == 0){
+            return true;
+        }
+
+        return false;
+
+    }
+};
