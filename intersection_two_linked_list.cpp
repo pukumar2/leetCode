@@ -1,3 +1,47 @@
+/* Run time 40ms and beats 100% CPP Submissions 
+ * SUPER EASY
+ */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+
+        ListNode *cur1 = headA;
+        ListNode *cur2 = headB;
+
+        // As soon as you reach the end of any of the string, just reset and start over but swap
+
+        while(cur1 != cur2){
+             if(cur1){
+                 cur1 = cur1->next;
+             }
+             else if(!cur1){
+                 cur1 = headB;
+             }
+
+             if(cur2){
+                 cur2 = cur2->next;
+             }
+
+            else if(!cur2){
+                cur2 = headA;
+            }
+        }
+
+        return cur1;
+    }
+};
+
+
 /** Run time  40ms
  * Definition for singly-linked list.
  * struct ListNode {
