@@ -1,3 +1,37 @@
+/* Short method Run time 4ms and beats 100% CPP submissions */
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string A, string B) {
+
+        istringstream ss(A);
+        istringstream sss(B);
+        vector<string> res;
+        unordered_map<string, int> m;
+
+        do {
+            string word;
+            ss >> word;
+            m[word]++;
+        }while(ss);
+
+        do {
+            string word;
+            sss >> word;
+            m[word]++;
+        }while(sss);
+
+        for(auto it : m){
+            if(it.second == 1){
+               res.push_back(it.first);
+            }
+        }
+
+        return res;
+    }
+};
+
+
+/* Long method */
 class Solution {
 public:
     vector<string> uncommonFromSentences(string a, string b) {
