@@ -1,4 +1,6 @@
 /* Run time 4ms and beats 99.26% of CPP submissions */
+
+// ITerative
 class Solution {
 public:
 
@@ -26,5 +28,25 @@ public:
 
         return helper(num);
 
+    }
+};
+
+// Recursive
+class Solution {
+public:
+    int addDigits(int num) {
+        
+        if(num < 10){
+            return num;
+        }
+        
+        int n = num, res = 0;
+        while(n){
+            res += n % 10;
+            n /= 10;
+        }
+        
+        return addDigits(res);
+        
     }
 };
