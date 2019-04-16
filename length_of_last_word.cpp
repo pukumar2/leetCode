@@ -1,3 +1,20 @@
+/* Run time 4ms and beats 100% CPP Submissions */
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+
+        istringstream ss(s);
+
+        string word;
+        do {
+            ss >> word;
+        } while(ss);
+
+        return word.length();
+    }
+};
+
+
 /* Run time 4ms */
 class Solution {
 public:
