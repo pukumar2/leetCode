@@ -47,3 +47,31 @@ public:
         return true;
     }
 };
+
+/* By normalizing the string */
+bool isIsomorphic(string s, string t) {
+
+         unordered_map<int, int> m;
+
+         for(auto it : s){
+            if(!m.count(it)) { m[it] = m.size(); }
+         }
+
+         string str;
+         for(auto it : s){
+             str += (m[it] + 'a');
+         }
+
+        m.clear();
+        for(auto it : t){
+            if(!m.count(it)) { m[it] = m.size(); }
+         }
+         string str2;
+        for(auto it : t){
+            str2 += (m[it] + 'a');
+        }
+
+        cout << str2 << endl;
+
+        return (str == str2);
+    }
