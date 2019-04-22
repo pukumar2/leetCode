@@ -1,3 +1,5 @@
+// Checked
+
 /* Run time 0ms and beats 100% CPP Submissions */
 class Solution {
 public:

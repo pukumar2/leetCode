@@ -1,3 +1,4 @@
+// Checked
 /* Run time 8ms, beats 92% of CPP Submissions */
 class Solution {
 public:
