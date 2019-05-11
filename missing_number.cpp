@@ -39,3 +39,42 @@ public:
         return *max_el + 1;
     }
 };
+
+/* Similar but different solution */
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+
+        int n = nums.size();
+
+        if(n == 0){
+            return 0;
+        }
+
+        // For single element pattern is if the nums[0] is even then it is nums[0] + 1
+        // else nums[0] - 1. With the exception of 0.
+        if(n == 1){
+            if((n & 1) && nums[0] > 0){
+                return nums[0] - 1;
+            }
+            else {
+                return nums[0] + 1;
+            }
+        }
+
+        int max_e = *max_element(nums.begin(), nums.end());
+        vector<int> vec(max_e + 2, 0);
+
+        for(int i = 0; i < n; i++){
+            vec[nums[i]] = 1;
+        }
+
+        for(int i = 0; i <= max_e+1; i++){
+            if(vec[i] == 0){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+};
